@@ -119,12 +119,10 @@ export default class GameController extends cc.Component {
 	private onBoosterClicked(type:BoosterType):void {
 		switch (type) {
 			case BoosterType.Bomb:
-				cc.log("accepted bomb");
 				this.inputMode = InputMode.Bomb;
 				break;
 
 			case BoosterType.Teleport:
-				cc.log("accepted teleport");
 				this.inputMode = InputMode.TeleportSelectFirst;
 				break;
 		}
@@ -132,13 +130,11 @@ export default class GameController extends cc.Component {
 
 	private checkGameState():void {
 		if (this.score >= GameConfig.targetScore) {
-			cc.log("Победа!");
 			this.ui.winShow("Победа!", this.score);
 			this.busy = true;
 			return;
 		}
 		if (this.movesLeft <= 0) {
-			cc.log("Проигрыш!");
 			this.ui.winShow("Проигрыш!", this.score);
 			this.busy = true;
 			return;
@@ -152,13 +148,11 @@ export default class GameController extends cc.Component {
 
 	private tryReshuffle():void {
 		if (this.reshuffleCount >= this.MAX_RESHUFFLE) {
-			cc.log("Игра закончена");
 			this.ui.winShow("Игра закончена!", this.score);
 			this.busy = true;
 			return;
 		}
 		this.reshuffleCount++;
-		cc.log("Reshuffle:", this.reshuffleCount);
 		this.model.shuffle();
 		this.boardView.syncWithModel(() => {
 			if (!this.model.hasAvailableMoves()) {

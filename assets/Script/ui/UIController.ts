@@ -66,8 +66,6 @@ export default class UIController extends cc.Component {
 		const node = this.winLabel.node.parent;
 		this.winLabel.string = text;
 		this.winScoreLabel.string = `ОЧКИ: ${score}`;
-
-		cc.log(text, score, node);
 		node.active = true;
 		node.opacity = 0;
 		node.setScale(0.8);
